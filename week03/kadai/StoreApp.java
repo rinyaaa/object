@@ -156,7 +156,7 @@ public class StoreApp extends JFrame {
             receipt.addProduct(item);
 
             // appendメソッドで追記
-            outputArea.append(item.toString());
+            outputArea.append(item.toString() + "\n");
             // 入力フィールドをクリアする
             productNameField.setText("");
             unitPriceField.setText("");
@@ -171,7 +171,7 @@ public class StoreApp extends JFrame {
 
             // 合計点数と合計金額を計算して表示
             String summary = String.format(
-                    "\n--- 合計点数: %d 点 ---\n--- 合計金額: %.2f 円 ---",
+                    "\n--- 合計点数: %d 点 ---\n--- 合計金額: %.2f 円 ---\n",
                     totalQuantity, totalPrice);
             outputArea.append(summary);
         });
