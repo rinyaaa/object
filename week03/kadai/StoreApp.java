@@ -9,7 +9,9 @@ public class StoreApp extends JFrame {
     private JTextField unitPriceField; // 単価を入力するフィールド
     private JTextField quantityField; // 数量を入力するフィールド
     private JButton processButton; // 処理を実行するボタン
+    private JButton keiButton; // 処理を実行するボタン
     private JTextArea outputArea; // 処理結果を表示するエリア
+    private Receipt receipt = new Receipt();
 
     public StoreApp() {
         // --- ウィンドウの基本設定 ---
@@ -24,6 +26,7 @@ public class StoreApp extends JFrame {
 
         // GridBagLayoutを使用して柔軟な配置を行う
         JPanel topPanel = new JPanel(new GridBagLayout());
+        JPanel bottomPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
         // GridBagConstraintsのデフォルト設定
@@ -94,6 +97,17 @@ public class StoreApp extends JFrame {
         processButton = new JButton("追加");
         topPanel.add(processButton, gbc);
 
+        // --- ボタンを配置するパネルを作成 ---
+
+        // ボタン (gridx=1, gridy=3) 右寄せで配置
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 1.0; // ボタン自体は伸縮させない
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.EAST; // ボタンを右端に寄せる
+        keiButton = new JButton("合計");
+        bottomPanel.add(keiButton, gbc); // ボタンをパネルに追加
+
         // --- 中央に配置する部品 (結果表示エリア) ---
         outputArea = new JTextArea();
         // outputArea.setEditable(false); // 必要に応じて編集不可に設定
@@ -109,8 +123,11 @@ public class StoreApp extends JFrame {
         // スクロール可能なテキストエリアをウィンドウの中央に配置（中央領域は利用可能な残りのスペースをすべて使う）
         add(scrollPane, BorderLayout.CENTER);
 
+        add(bottomPanel, BorderLayout.SOUTH); // ボタンを下部に配置
+
         // --- ボタンのアクション設定 ---
         processButton.addActionListener(e -> {
+
             // 各フィールドからテキストを取得
             String productName = productNameField.getText();
             String unitPriceText = unitPriceField.getText();
@@ -136,14 +153,27 @@ public class StoreApp extends JFrame {
 
             ProductItem item = new ProductItem(productName, unitPrice, quantity);
 
+            receipt.addProduct(item);
+
             // appendメソッドで追記
             outputArea.append(item.toString());
-
             // 入力フィールドをクリアする
             productNameField.setText("");
             unitPriceField.setText("");
             quantityField.setText("");
 
+        });
+
+        keiButton.addActionListener(e -> {
+            double totalPrice = receipt.getTotalPrice();
+
+            int totalQuantity = receipt.getTotalQuantity();
+
+            // 合計点数と合計金額を計算して表示
+            String summary = String.format(
+                    "\n--- 合計点数: %d 点 ---\n--- 合計金額: %.2f 円 ---",
+                    totalQuantity, totalPrice);
+            outputArea.append(summary);
         });
 
         // --- ウィンドウを表示 ---

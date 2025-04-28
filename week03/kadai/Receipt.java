@@ -3,7 +3,8 @@ package week03.kadai;
 import java.util.Arrays;
 
 public class Receipt {
-    private ProductItem[] items; // 商品名
+    // 商品データを格納する配列
+    private ProductItem[] items;
 
     // コンストラクタ: 初期サイズ0の配列を確保
     public Receipt() {
@@ -38,4 +39,5 @@ public class Receipt {
         return totalQuantity;
     }
 
+  
 }
