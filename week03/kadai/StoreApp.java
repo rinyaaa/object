@@ -105,7 +105,7 @@ public class StoreApp extends JFrame {
         gbc.weightx = 1.0; // ボタン自体は伸縮させない
         gbc.fill = GridBagConstraints.NONE;
         gbc.anchor = GridBagConstraints.EAST; // ボタンを右端に寄せる
-        keiButton = new JButton("合計");
+        keiButton = new JButton("合計計算");
         bottomPanel.add(keiButton, gbc); // ボタンをパネルに追加
 
         // --- 中央に配置する部品 (結果表示エリア) ---
