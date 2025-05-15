@@ -1,4 +1,4 @@
-package src.jp.ac.ait.k24015.library;
+package jp.ac.ait.k24015.library;
 
 import java.util.ArrayList;
 import java.util.List;
