@@ -1,4 +1,4 @@
-package oop1.k24014;
+package oop11.k24015;
 
 import javax.swing.JPanel; // GUIコンポーネントの基本クラスをインポート
 import java.awt.Color; // 色を扱うためのクラスをインポート

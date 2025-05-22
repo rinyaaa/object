@@ -1,4 +1,4 @@
-package oop1.k24014;
+package oop1.k24015;
 
 import java.awt.Color;
 import java.awt.Graphics;

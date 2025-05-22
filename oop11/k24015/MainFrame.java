@@ -1,4 +1,4 @@
-package oop1.k24014;
+package oop11.k24015;
 
 import javax.swing.*; // Swing GUIコンポーネントをインポート
 import java.awt.BorderLayout; // レイアウトマネージャをインポート

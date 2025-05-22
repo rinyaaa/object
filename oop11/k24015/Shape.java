@@ -1,4 +1,4 @@
-package oop1.k24014;
+package oop11.k24015;
 
 import java.awt.Color; // 色を扱うためのクラスをインポート
 import java.awt.Graphics; // 描画処理を行うためのクラスをインポート
