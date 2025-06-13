@@ -1,5 +1,5 @@
 // oop1/challenge07/ValueUtils.java
-package oop1.challenge07;
+package week07.oop1.challenge07;
 
 import java.util.function.Function;
 
